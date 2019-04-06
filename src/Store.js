@@ -1,22 +1,34 @@
 import { createStore } from 'redux';
 
-const reducer = (state={text:'Hello'},action)=>{
+export const showBirthday= (text)=>{
+
+  return {
+    type:'BIRTHDAY',
+    text
+  }
+}
+
+export const showWeddingDay= (text)=>{
+
+  return {
+    type:'WEDDINGDAY',
+    text
+  }
+}
+
+const reducer = (prevState={text:'Hello'},action)=>{
 
 
     switch(action.type) {
       case 'BIRTHDAY':
-        return {
-          text: 'Happy Birthday'
-        };
+        return Object.assign({},action);
       case 'WEDDINGDAY':
-        return {
-          text: 'Happy Anniversary'
-        };
+        return Object.assign({},action);
       default:
-        return state;
+        return prevState;
     }
 }
 
 const store = createStore(reducer);
-
+store.subscribe(()=>{console.log('redux action called')})
     export default store;
