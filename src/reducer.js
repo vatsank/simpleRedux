@@ -1,20 +1,7 @@
-import { createStore } from 'redux';
-
-export const showBirthday= (text)=>{
-
-  return {
-    type:'BIRTHDAY',
-    text
-  }
-}
-
-export const showWeddingDay= (text)=>{
-
-  return {
-    type:'WEDDINGDAY',
-    text
-  }
-}
+import { createStore,applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { createLogger } from 'redux-logger'
+const loggerMiddleware = createLogger()
 
 const reducer = (prevState={text:'Hello'},action)=>{
 
@@ -29,6 +16,12 @@ const reducer = (prevState={text:'Hello'},action)=>{
     }
 }
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk, loggerMiddleware));
 store.subscribe(()=>{console.log('redux action called')})
     export default store;
+
+
+
+
+
+

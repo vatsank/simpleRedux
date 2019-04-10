@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import HelloWorld from '../HelloWorld.react';
-import {showBirthday,showWeddingDay} from '../Store';
-import store from '../Store';
+import {showBirthday,showWeddingDay} from '../actions';
+import store from '../reducer';
 class Greeting extends React.Component {
 
 
